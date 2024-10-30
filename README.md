@@ -8,9 +8,8 @@ you can see the detail information from here:
 genome_assembly.sh
 
 ```
-### step2, Identification of Gene Copy Number Variations
+### step2, gene copy number identification
 
 This part includes all related content of DNA and RNA-seq related analysis,
 ```
-phylogenetic tree: phylogenetic_tree.sh, phylogenetic_tree_plot.R, vcf2other.py
-PCA and IBD: PCA_and_IBD.sh, PCA.R, IBD.R, lecture06_07_add_id.pl
+1-4 copy gene number identification:gene_copy_number_variance.sh
