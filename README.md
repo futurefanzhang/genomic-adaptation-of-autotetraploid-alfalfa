@@ -2,8 +2,7 @@
 
 This is the script used for genomic analysis of climate adaptation of alfalfa
 
-### step1, genome assembly of alfalfa, including tetraploid variants calling
-
+### step1, genome assembly of alfalfa
 you can see the detail information from here: 
 ```
 genome_assembly.sh
