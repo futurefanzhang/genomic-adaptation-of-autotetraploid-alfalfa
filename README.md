@@ -6,8 +6,7 @@ This is the script used for genomic analysis of climate adaptation of alfalfa
 
 you can see the detail information from here: 
 ```
-snp_and_indel_calling.sh
-freebayes_variants_calling.sh
+genome_assembly.sh
 
 ```
 ### step2, Identification of Gene Copy Number Variations
