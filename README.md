@@ -13,3 +13,6 @@ genome_assembly.sh
 This part includes all related content of DNA and RNA-seq related analysis,
 ```
 1-4 copy gene number identification:gene_copy_number_variance.sh
+RNA_seq_analysis.R
+
+```
