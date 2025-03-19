@@ -1,7 +1,7 @@
 ##This script contained two parts of the assembly, ZM4_V1.5 and ZM4_V2.0
 ##Part 1: ZM4_V1.5
 
-##hifiasm, generate contig
+##hifiasm, v0.18.5-r499, generate contig
 hifiasm -o muxu_ho -t 100 /public/home/shixiaoya/zf/hifi/muxu.fastq.gz --ul /public/home/shixiaoya/zf/ONT/muxu.ont.fastq.gz --n-hap 4  --hg-size 800m
 
 ##juicer
@@ -47,11 +47,11 @@ perl /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/name_change1.
 ##step4: merge MQ>=55 reads in ZM4_V1.5(rename32.fa) and ZM4_V1.0(zm4_Chr32_long.fa)
 cat zm4_to_rename32_hifi_MQ55_reads.txt mapped_rename32_high_quality_MQ55_reads.txt > all_hifi_reads_use.txt #合并两个版本的比对结果，然后用于下一步
 perl /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/name_change2.pl change_chr_hap.txt all_hifi_reads_use.txt  mapped_zm4_rename32_MQ55_hap_info.txt ##把32个染色体名称换成hap1-4,统计每个hap对应的reads信息，change_chr_hap.txt包含两列，第一列染色体，第二列hap1-4信息
-perl /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/name_change3.pl change_rename32_chr_to_group.txt mapped_rename32_high_quality_MQ55_reads.txt mapped_rename32_high_quality_MQ55_hifi_use.txt #change_rename32_chr_to_group.txt包含两列，第一列是染色体，第二列是连锁群
+perl /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/name_change3.pl change_rename32_chr_to_group.txt all_hifi_reads_use.txt mapped_zm4_rename32_MQ55_hifi_use.txt #change_rename32_chr_to_group.txt包含两列，第一列是染色体，第二列是连锁群
 
 ##re-run hifiasm, 0.19.7-r598
 #pwd, /data1/usr/zhangfan/hifiasm/
-hifiasm -o muxu_four_hap_rename32_group -t 80 -D 10 --ul muxu.ont.longerthan50kb.fastq muxu.hifi_raw.data.fastq.gz -5 mapped_rename32_high_quality_MQ55_hifi_use.txt --n-hap 4 --hom-cov 120
+hifiasm -o muxu_four_hap_rename32_group -t 80 -D 10 --ul muxu.ont.longerthan50kb.fastq muxu.hifi_raw.data.fastq.gz -5  mapped_zm4_rename32_MQ55_hifi_use.txt --n-hap 4 --hom-cov 120
 awk '/^S/{print ">"$2;print $3}' muxu_four_hap_rename32_new_group.bp.hap1.p_ctg.gfa > muxu_four_hap_rename32_group.bp.hap1.p_ctg.fa #same for rest haps
 seqkit stats muxu_four_hap_rename32_group.bp.hap*.p_ctg.fa -a
 
