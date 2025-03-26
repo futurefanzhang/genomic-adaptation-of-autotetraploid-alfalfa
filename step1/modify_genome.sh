@@ -1,5 +1,6 @@
 ##mummer compare, check the mapping info of chr3 in M.polymorpha
 cd /data/home/zhangfan/compare_genomoe_medicago/re_anno/Mpoly/
+seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr3.fa ##extract chr3 info, chr_list.txt contain:Chr3
 nucmer --mum --t 64 -p Mpoly_MtA17 Mpoly.chr3.fa ../MtrunA17_5.0_chr.genome.fasta
 delta-filter -1 -i 85 -l 5000 -q Mpoly_MtA17.delta > Mpoly_MtA17.delta-filter
 show-coords -THrd Mpoly_MtA17.delta-filter >  Mpoly_MtA17.filtered.coords
@@ -14,3 +15,9 @@ sed -i 's/Chr3:0-51900483/Chr7/g' Mpoly.chr7.fa
 echo -e "Chr3\t51900582\t93525394" | bedtools getfasta -fi Mpoly.chr3.fa -bed - -fo Mpoly.chr3_use.fa
 sed -i 's/Chr3:51900582-93525394/Chr3/g' Mpoly.chr3_use.fa
 
+seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr8.fa ##modify chr_list.txt
+seqkit seq --reverse Mpoly.chr8.fa > Mpoly.chr8_reversed.fa
+
+##combine all chromosome
+seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr_rest.fa ##extract the rest chromosomes
+cat Mpoly.chr_rest.fa Mpoly.chr3_use.fa Mpoly.chr7.fa Mpoly.chr8_reversed.fa > Mpoly_merged_chromosomes.fa ##combine all chr
