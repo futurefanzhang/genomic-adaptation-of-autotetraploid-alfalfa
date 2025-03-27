@@ -1,5 +1,7 @@
 ##mummer compare, check the mapping info of chr3 in M.polymorpha
 cd /data/home/zhangfan/compare_genomoe_medicago/re_anno/Mpoly/
+seqkit grep -f chr_list.txt Mpoly.fa > Mpoly.chr.fa ##only extract chromosome info for download analysis
+python ../replace_chr_name.py chr_replace.txt Mpoly.chr.fa Mpoly.chr.use.fa ##match the chromosome number to MtA17.
 seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr3.fa ##extract chr3 info, chr_list.txt contain:Chr3
 nucmer --mum --t 64 -p Mpoly_MtA17 Mpoly.chr3.fa ../MtrunA17_5.0_chr.genome.fasta
 delta-filter -1 -i 85 -l 5000 -q Mpoly_MtA17.delta > Mpoly_MtA17.delta-filter
