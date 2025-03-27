@@ -21,3 +21,6 @@ seqkit seq --reverse Mpoly.chr8.fa > Mpoly.chr8_reversed.fa
 ##combine all chromosome
 seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr_rest.fa ##extract the rest chromosomes
 cat Mpoly.chr_rest.fa Mpoly.chr3_use.fa Mpoly.chr7.fa Mpoly.chr8_reversed.fa > Mpoly_merged_chromosomes.fa ##combine all chr
+seqkit sort -n Mpoly_merged_chromosomes.fa -o Mpoly_merged_chromosomes_sort.fa ##sort chr
+
+##we used the similar pipeline to reverse the chr for the rest genomes
