@@ -18,7 +18,7 @@ echo -e "Chr3\t51900582\t93525394" | bedtools getfasta -fi Mpoly.chr3.fa -bed - 
 sed -i 's/Chr3:51900582-93525394/Chr3/g' Mpoly.chr3_use.fa
 
 seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr8.fa ##Edit chr_list.txt to reflect "Chr8"
-seqkit seq -r -p --seq-type DNA Mpoly.chr8.fa > Mpoly.chr8_reverse.fa ##reverse chromosome
+seqkit seq -r -p --seq-type DNA Mpoly.chr8.fa > Mpoly.chr8_reverse.fa ##reverse chromosome, can be used for multiple chromosomes
 
 ##combine all chromosome
 seqkit grep -f chr_list.txt Mpoly.chr.use.fa > Mpoly.chr_rest.fa ##extract the rest chromosomes
