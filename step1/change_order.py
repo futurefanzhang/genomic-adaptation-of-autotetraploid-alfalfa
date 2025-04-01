@@ -39,5 +39,5 @@ def sort_gff3_chr1_to_chr8(input_gff3, output_gff3):
             outfile.write(other_line + '\n')
 
 # 使用示例
-sort_gff3_chr1_to_chr8('Medicago_arabica.gff3', 'Medicago_arabica_sorted.gff3')
+sort_gff3_chr1_to_chr8('Medicago_arabica_rename_reorder.gff3', 'Medicago_arabica.gff3')
 
