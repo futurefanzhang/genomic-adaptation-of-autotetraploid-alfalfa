@@ -34,4 +34,5 @@ python change_chr.py ##更新gff3的染色体名称
 python change_gff.py ##倒换gff3顺序
 python change_order.py ##修改染色体顺序，从Chr1-Chr8
 perl ~/rename.pl Medicago_arabica.gff3 Mara > Medicago_arabica_final.gff3 ##重新排序基因ID
+samtools faidx Medicago_arabica.fa
 for i in $(cat species.txt);do gffread $(basename ${i}).gff3 -g $(basename ${i}).fa -x $(basename ${i}).cds.fa -y $(basename ${i}).pep.fa -w $(basename ${i}).trans.fa; done ##生成cds,pep文件等
