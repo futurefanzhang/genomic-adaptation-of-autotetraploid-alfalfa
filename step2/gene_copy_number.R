@@ -45,6 +45,8 @@ hap412=hap41 %>% inner_join(hap42, by=c('qseqid'='qseqid'))
 hap4123=hap412 %>% inner_join(hap43, by=c('qseqid'='qseqid'))
 ##combine
 four_hap_gene=rbind(hap1234,hap4123)
+write.table(four_hap_gene,"Four_haps_gene_paired_info.txt",row.names = F,col.names = T,sep = "\t",quote = F) ##export gene pair info
+
 four_hap_gene$pair=1:nrow(four_hap_gene)
 four_hap_gene_1=four_hap_gene[,c("qseqid","hap_quary.x","pair")]
 four_hap_gene_2=four_hap_gene[,c("sseqid.x","hap_match.x","pair")]
@@ -88,7 +90,7 @@ hap423=hap42 %>% inner_join(hap43, by=c('qseqid'='qseqid'))
 hap31=read.table("ZM4_V2_remapped_hap3_mapping_hap1_gene.txt",header = T,sep = "\t")
 hap32=read.table("ZM4_V2_remapped_hap3_mapping_hap2_gene.txt",header = T,sep = "\t")
 hap312=hap31 %>% inner_join(hap32, by=c('qseqid'='qseqid'))
-three_hap=rbind(hap124,hap134,hap123,hap234,hap412,hap423,hap312) ##it my contains four copy genes
+three_hap=rbind(hap124,hap134,hap123,hap234,hap412,hap423,hap312) ##it may contains four copy genes, filter it in the following steps 
 three_hap$pair=1:nrow(three_hap)
 three_hap_1=three_hap[,c("qseqid","hap_quary.x","pair")]
 three_hap_2=three_hap[,c("sseqid.x","hap_match.x","pair")]
@@ -100,8 +102,9 @@ colnames(three_hap_2)=c("gene","hap","pair")
 colnames(three_hap_3)=c("gene","hap","pair")
 combine_three_hap123=rbind(three_hap_1,three_hap_2,three_hap_3)
 combine_three_hap123_gene_sep=combine_three_hap123 %>% separate(gene, into = c("gene_name", "mRNA"), sep = ".t")
-
-combine_three_hap123_gene=combine_three_hap123_gene_sep[!combine_three_hap123_gene_sep$gene_name %in% combine_four_hap_gene1234_sep$gene_name,]
+combine_three_hap123_gene=combine_three_hap123_gene_sep[!combine_three_hap123_gene_sep$gene_name %in% combine_four_hap_gene1234_sep$gene_name,] #filter
+three_hap_gene=three_hap[three_hap$pair %in% combine_three_hap123_gene$pair,]
+write.table(three_hap_gene,"Three_haps_gene_paired_info.txt",row.names = F,col.names = T,sep = "\t",quote = F) ##export gene pair info
 
 ##三拷贝成对信息
 ##remove duplicate info
@@ -137,6 +140,10 @@ combine_two_hap12_gene_sep=combine_two_hap12 %>% separate(gene, into = c("gene_n
 
 combine_two_hap12_gene=combine_two_hap12_gene_sep[!combine_two_hap12_gene_sep$gene_name %in% combine_four_hap_gene1234_sep$gene_name,]
 combine_two_hap12_gene=combine_two_hap12_gene[!combine_two_hap12_gene$gene %in% combine_three_hap123_gene$gene_name,]
+
+two_hap_gene=two_hap[two_hap$pair %in% combine_two_hap12_gene$pair,]
+write.table(two_hap_gene,"Two_haps_gene_paired_info.txt",row.names = F,col.names = T,sep = "\t",quote = F) ##export gene pair info
+
 ##二拷贝成对信息
 ##remove duplicate info
 unique_two_hap_gene12 <- combine_two_hap12_gene %>%
@@ -161,6 +168,8 @@ one_copy=all_gene[!all_gene$gene %in% combine_four_hap_gene1234_sep$gene_name, ]
 one_copy=one_copy[!one_copy$gene %in% combine_three_hap123_gene$gene_name, ] ##所有三拷贝总量：36330, 17.9%
 one_copy=one_copy[!one_copy$gene %in% combine_two_hap12_gene$gene_name, ]  ##所有二拷贝基因总量：37344, 18.4%
 ##49344个一拷贝基因,24.4%
+write.table(one_copy,"One_hap_gene_paired_info.txt",row.names = F,col.names = T,sep = "\t",quote = F) ##export gene pair info
+
 ##combine gene information
 all_gene$Type=NA
 all_gene$Type[all_gene$gene %in% combine_four_hap_gene1234_sep$gene_name] <-"four_copy"
