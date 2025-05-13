@@ -63,7 +63,7 @@ del_haps_stats <- fourfold_core_gene_pair_hap1234_four_haps %>% group_by(del_hap
 write.table(del_haps_stats,"Pie_deleterious_hap1-4_percent.txt",sep = "\t",row.names = F)
 ##figures
 del_haps_stats$del_hap_count=as.factor(del_haps_stats$del_hap_count)
-pie<- ggplot(del_haps_stats, aes(x="", y=as.numeric(proportion), fill=del_hap_count))+#set basic figure，y信息每个物种都要做
+pie<- ggplot(del_haps_stats, aes(x="", y=as.numeric(proportion), fill=del_hap_count))+#set basic figure
   geom_bar(width = 1, stat = "identity")+ coord_polar("y", start=0)+ #change to pie plot
   scale_fill_manual(values= c("#9DB4CE", "#F9C08A", "#A4CB9E","#cee2f5","#EDA1A4"),name = "Deleterious haplotype number",
                     labels = c("0", "1","2","3","4"))+ #change different color for each piece,another color:Zissou1
@@ -72,7 +72,7 @@ pie<- ggplot(del_haps_stats, aes(x="", y=as.numeric(proportion), fill=del_hap_co
              base_family = "",
              base_line_size = base_size/20,
              base_rect_size = base_size/20)+
-  geom_text(aes(x=1.3,size=10,label = paste(format(round(as.numeric(proportion)*100,2),nsmall=2),"%",sep="")),color = c("black"),position = position_stack(vjust = 0.5),show.legend = FALSE)+ #add text number to pie plot，更换物种记得修改M.group
+  geom_text(aes(x=1.3,size=10,label = paste(format(round(as.numeric(proportion)*100,2),nsmall=2),"%",sep="")),color = c("black"),position = position_stack(vjust = 0.5),show.legend = FALSE)+ 
   theme(plot.margin = margin(t=0, r=0, b=1, l=0, "cm"),
         axis.title = element_text(color="black",size=15),
         axis.text = element_blank(),axis.ticks=element_blank(),axis.line=element_blank(),
