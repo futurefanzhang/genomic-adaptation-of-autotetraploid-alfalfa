@@ -48,7 +48,7 @@ gene_pair_dsnp$del_hap_count <- apply(gene_pair_dsnp, 1, function(row) {
 gene_pair_dsnp$pair=as.integer(rownames(gene_pair_dsnp))
 gene_pair_hap1234_four_haps=gene_pair_dsnp %>% inner_join(gene_pair_hap1234_del, by=c('pair'='pair')) ##gene pair info
 gene_pair_hap1234_four_haps=gene_pair_hap1234_four_haps %>% inner_join(copy_info, by=c('gene_name.x'='gene')) ##core gene info
-fourfold_core_gene_pair_hap1234_four_haps=gene_pair_hap1234_four_haps[gene_pair_hap1234_four_haps$Type2=="Fourfold_core",]
+fourfold_core_gene_pair_hap1234_four_haps=gene_pair_hap1234_four_haps[gene_pair_hap1234_four_haps$Type2=="Fourfold_core",] ##only use fourfold core genes
 write.table(fourfold_core_gene_pair_hap1234_four_haps,"Fourfold_core_deleterious_variants_paired_Hap1-4_del_prometer_gene.txt", row.names = T,quote=F,sep = "\t")
 ##export information of fourfold core genes with four hap deleterious variants
 gene_pair_hap1234_four_del=fourfold_core_gene_pair_hap1234_four_haps[fourfold_core_gene_pair_hap1234_four_haps$del_hap_count=="4",]
