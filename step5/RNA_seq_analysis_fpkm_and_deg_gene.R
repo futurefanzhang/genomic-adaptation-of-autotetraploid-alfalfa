@@ -29,5 +29,6 @@ FCcut=2
 FDRcut=0.05
 diff=out[(!is.na(res$padj) & res$padj<FDRcut) & abs(res$log2FoldChange)>abs(log2(FCcut)),]
 #=======================================
-
-write.csv(diff,"DESeq2_Cold_normal_11_DEG.csv", row.names = TRUE,quote=F) ##差异基因，差异倍数，P值和FDR值
+diff=as.data.frame(diff)
+diff$gene=rownames(diff)
+write.table(diff,"V2_DESeq2_UC-1465_leaf_cold_DEG.txt", row.names = F,col.names = T,sep = "\t",quote = F) ##差异基因，差异倍数，P值和FDR值
