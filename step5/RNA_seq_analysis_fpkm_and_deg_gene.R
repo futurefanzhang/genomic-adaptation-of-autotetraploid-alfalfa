@@ -31,4 +31,9 @@ diff=out[(!is.na(res$padj) & res$padj<FDRcut) & abs(res$log2FoldChange)>abs(log2
 #=======================================
 diff=as.data.frame(diff)
 diff$gene=rownames(diff)
-write.table(diff,"V2_DESeq2_UC-1465_leaf_cold_DEG.txt", row.names = F,col.names = T,sep = "\t",quote = F) ##差异基因，差异倍数，P值和FDR值
+diff$research="2_CAU_cold"
+diff$stress_type="cold"
+diff$accession="UC-1465"
+diff$tissue="leaf"
+write.table(diff,"V2_DESeq2_2_CAU_cold_UC-1465_leaf_DEG.txt", row.names = F,col.names = T,sep = "\t",quote = F) ##差异基因，差异倍数，P值和FDR值
+##use the same pipeline for the rest 22 researcher's RNA-seq data.
