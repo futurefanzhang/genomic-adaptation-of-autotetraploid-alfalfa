@@ -1,5 +1,5 @@
 setwd("E:\\Genome\\Comparative_genomics\\RNA_seq_results\\DEG_gene_analysis")
-file_list <- list.files(pattern = "*.txt") ##put all DEG file in one folder,files similar like () data are the result of RNA_seq_analysis_fpkm_and_deg_gene.R
+file_list <- list.files(pattern = "*.txt") ##put all DEG file in one folder,files similar like V2_DESeq2_2_CAU_cold_UC-1465_leaf_DEG.txt (the result of RNA_seq_analysis_fpkm_and_deg_gene.R)
 
 # 创建一个空的数据框以存储合并的数据
 combined_data <- data.frame()
