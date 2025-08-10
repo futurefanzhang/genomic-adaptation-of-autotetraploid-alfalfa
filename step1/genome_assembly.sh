@@ -2,7 +2,7 @@
 ##Part 1: ZM4_V1.5
 
 ##hifiasm, v0.18.5-r499, generate contig
-hifiasm -o muxu_ho -t 100 /public/home/shixiaoya/zf/hifi/muxu.fastq.gz --ul /public/home/shixiaoya/zf/ONT/muxu.ont.fastq.gz --n-hap 4  --hg-size 800m
+hifiasm -o muxu_ho -t 100 /public/home/shixiaoya/zf/hifi/muxu.fastq.gz --ul /public/home/shixiaoya/zf/ONT/muxu.ont.fastq.gz --hg-size 800m
 
 ##juicer
 bwa index /public/home/shixiaoya/zf/Nassembly/hap/juicer/reference/muxu_ho.bp.p_utg.fa
