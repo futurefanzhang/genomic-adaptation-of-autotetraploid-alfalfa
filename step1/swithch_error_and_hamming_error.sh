@@ -1,3 +1,4 @@
+##Refer:Github:tangerzhang/calc_switchErr
 minimap2 -t 40 -ax map-pb --secondary=no /data/home/zhangfan/compare_genomoe_medicago/ZM4_V2/ZM4_V2_hap4_use.fa muxu.hifi_raw.data.fastq.gz |samtools view -bt 2 /data/home/zhangfan/compare_genomoe_medicago/ZM4_V2/ZM4_V2_hap4_use.fa.fai - |samtools sort -@ 40 -o ZM4_V2_hap4_hifi.sorted.bam -
 samtools index ZM4_V2_hap1_hifi.sorted.bam
 samtools sort -@40 -o sorted_ZM4_V2_aln_hifi.bam ZM4_V2_aln_hifi.bam
@@ -22,7 +23,7 @@ cat freebayes_hap1_Chr*.phased_GT.vcf|grep -v '#'|grep PS|cut -f1,2,4,5,10 > fre
 perl /data1/usr/zhangfan/hifiasm/filter_freebayes_snp.pl freebayes_hifi.phase.txt freebayes_hifi.snp.phase.txt
 
 ##reference SNP
-nucmer --mum --t 64 -c 1000 --maxgap=500 -p mapping2 /public/home/ac685n40ot/13Medicago/ZM4_V2_hap1_change_chr.fa ZM4_V2.hap2.chr.fa ##Refer:Github:tangerzhang/calc_switchErr
+nucmer --mum --t 64 -c 1000 --maxgap=500 -p mapping2 /public/home/ac685n40ot/13Medicago/ZM4_V2_hap1_change_chr.fa ZM4_V2.hap2.chr.fa 
 show-snps -Clr mapping2.delta > hap1_hap2.snps
 perl /public/home/ac685n40ot/13Medicago/ZM4_V2/hap2/filter_snp_haps.pl hap1_hap2.snps hap1_hap2_filter_chr.snps ##过滤掉不同染色体的比对结果
 mv */*_filter_chr.snps ./snp_hap1234/
