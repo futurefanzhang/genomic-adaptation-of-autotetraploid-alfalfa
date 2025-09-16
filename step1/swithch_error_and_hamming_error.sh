@@ -29,4 +29,4 @@ mv */*_filter_chr.snps ./snp_hap1234/
 cat *snps |grep Chr |grep -v home|perl -e 'while(<>){chomp;$_=~s/^\s+//;@t=split(/\s+/,$_);print "$t[13]\t$t[0]\t$t[1]\t$t[13]\t$t[3]\t$t[2]\n" if($t[1] ne "." and $t[2] ne ".")}' > hap1234.hapVar.snps
 
 ##calculate switch_error and hamming_error
-python calculate_switcherror_hammingerror_v2.py freebayes_hifi.snp.phase.txt hap1234.hapVar.snps
+python calculate_switcherror_hammingerror_v3.py freebayes_hifi.snp.phase.txt hap1234.hapVar.snps
