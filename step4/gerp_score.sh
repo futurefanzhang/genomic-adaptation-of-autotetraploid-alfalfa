@@ -3,7 +3,7 @@
 ##2Arachis duranensis: https://v1.legumefederation.org/data/v2/Arachis/duranensis/genomes/V14167.gnm2.J7QH/
 ##3Chickpea:https://www.ncbi.nlm.nih.gov/datasets/genomes/?taxon=3827&utm_source=assembly
 ##4Pea:https://urgi.versailles.inra.fr/download/pea/chromosomes/
-##5Trifolium pretense: http://ftp.ensemblgenomes.org/pub/plants/release-54/fasta/trifolium_pratense/pep/
+##5Trifolium pretense: http://ftp.ensemblgenomes.org/pub/plants/release-54/fasta/trifolium_pratense/
 ##6Arabidopsis:ftp://ftp.ensemblgenomes.org/pub/plants/release-51/fasta/arabidopsis_thaliana/dna/
 ##7Populus trichocarpa:ftp://ftp.ensemblgenomes.org/pub/plants/release-51/fasta/populus_trichocarpa/dna/
 ##8Vitis vinifera:https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_030704535.1/
