@@ -51,9 +51,9 @@ perl /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/name_change3.
 
 ##re-run hifiasm, 0.19.7-r598
 #pwd, /data1/usr/zhangfan/hifiasm/
-hifiasm -o muxu_four_hap_rename32_group -t 80 -D 10 --ul muxu.ont.longerthan50kb.fastq muxu.hifi_raw.data.fastq.gz -5  mapped_zm4_rename32_MQ55_hifi_use.txt --n-hap 4 --hom-cov 120
-awk '/^S/{print ">"$2;print $3}' muxu_four_hap_rename32_new_group.bp.hap1.p_ctg.gfa > muxu_four_hap_rename32_group.bp.hap1.p_ctg.fa #same for rest haps
-seqkit stats muxu_four_hap_rename32_group.bp.hap*.p_ctg.fa -a
+hifiasm -o muxu_four_hap_rename32_new_group -t 80 -D 10 --ul muxu.ont.longerthan50kb.fastq muxu.hifi_raw.data.fastq.gz -5  mapped_zm4_rename32_MQ55_hifi_use.txt --n-hap 4 --hom-cov 120
+awk '/^S/{print ">"$2;print $3}' muxu_four_hap_rename32_new_group.bp.hap1.p_ctg.gfa > muxu_four_hap_rename32_new_group.bp.hap1.p_ctg.fa #same for rest haps
+seqkit stats muxu_four_hap_rename32_new_group.bp.hap*.p_ctg.fa -a
 
 ##using ragtag to generate ZM4_V2.0 genome, single8.fa was the hap1 genome of ZM4_V1.5
-python /public/home/wangxu02/anaconda3/envs/ragtag/bin/ragtag.py scaffold /public/agis/zhouyongfeng_group/zhangfan02/genome/new_ref/single8.fa /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/muxu_four_hap_rename32_group.bp.hap1.p_ctg.fa -o hap1.scaffold.fa ##same for rest haps
+python /public/home/wangxu02/anaconda3/envs/ragtag/bin/ragtag.py scaffold /public/agis/zhouyongfeng_group/zhangfan02/genome/new_ref/single8.fa /public/agis/zhouyongfeng_group/zhangfan02/genome/hifi_contig/muxu_four_hap_rename32_new_group.bp.hap1.p_ctg.fa -o hap1.scaffold.fa ##same for rest haps
