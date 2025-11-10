@@ -47,3 +47,12 @@ all_expressed_gene_FPKM.R
 climate_gene_enrichment.R
 top10_percent_gene_exp_detail_info.R
 ```
+
+### step6, visualization. 
+
+This part includes the script used for generate main figures and supplementary figures. 
+```
+fig1a.R
+fig1b.R
+....
+```
