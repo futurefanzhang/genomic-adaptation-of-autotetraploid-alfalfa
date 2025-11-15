@@ -17,7 +17,7 @@ orthofinder.R
 core_gene_in_ZM4V2.sh
 ```
 
-### step3, gene copy number variation and six groups identification. 
+### step3, allelic copy number variation and six gene groups identification. 
 
 This part includes gene copy number variation and six groups identification 
 ```
