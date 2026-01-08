@@ -56,3 +56,8 @@ fig1a.R
 fig1b.R
 ....
 ```
+
+### Publication:
+Zhang, F., Wei, C., Shi, X. et al. Medicago super-pangenome reveals adaptive advantages and evolutionary constraints in autotetraploid alfalfa. Nat Commun (2025). https://doi.org/10.1038/s41467-025-67280-9
+
+### if you have any questions, please send email to me: zhangfan06@caas.cn or zfan887@gmail.com
